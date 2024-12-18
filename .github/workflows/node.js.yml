@@ -10,4 +10,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Node.js
-      uses: mahabaleshwars/setup-node@bugfix/720-cahce-timeout-windows
+      # uses: mahabaleshwars/setup-node@bugfix/720-cahce-timeout-windows
+      uses: actions/setup-node@v4
