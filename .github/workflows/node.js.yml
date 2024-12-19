@@ -5,10 +5,14 @@ on:   # yamllint disable-line rule:truthy
 jobs:
   test:
     name: Checkout and Setup
-    timeout-minutes: 2
+    timeout-minutes: 5
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: mahabaleshwars/setup-node@bugfix/720-cahce-timeout-windows
+    - name: Install yarn
+      run: choco install yarn
     - name: Set up Node.js
       uses: mahabaleshwars/setup-node@bugfix/720-cahce-timeout-windows
       # uses: actions/setup-node@v4
