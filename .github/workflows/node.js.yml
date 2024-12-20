@@ -9,5 +9,17 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Rename node.js file
+      if: runner.os == 'Windows'
+      run: |
+        if (Test-Path -Path .\node.js) {
+          Rename-Item -Path .\node.js -NewName .\node_backup.js
+        }
     - name: Set up Node.js
       uses: actions/setup-node@v4
+    - name: Restore node.js file
+      if: runner.os == 'Windows'
+      run: |
+        if (Test-Path -Path .\node_backup.js) {
+          Rename-Item -Path .\node_backup.js -NewName .\node.js
+        }
